@@ -8,8 +8,6 @@ struct node
     struct node * next;
 };
 
-//Test comment
-
 struct node *addbeg(struct node *head)
 {
     int data;
