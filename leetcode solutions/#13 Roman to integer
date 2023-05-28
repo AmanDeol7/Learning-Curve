@@ -1,0 +1,57 @@
+#include <iostream>
+#include <string>
+using namespace std;
+//function to get values of roman letters
+int value(char s){
+    if (s =='I')
+    {
+        return 1;
+
+    }
+    else if (s =='V')
+    {
+        return 5;
+    }
+    else if (s == 'X')
+    {
+        return 10;
+    }
+    else if (s == 'C')
+    {
+        return 100;
+    }
+    else if (s == 'M')
+    {
+        return 1000;
+    }
+    else if ( s == 'L')
+    {
+        return 50;
+    }
+    return 0;
+}
+
+int main(){
+    string s;
+    cin>>s;
+    int len = s.length();
+  
+    int sum =0;
+    int num =0;
+   //iterates over the entire list
+    for (int i =0;i<len ;i++)
+    {
+        if ( i == len || value(s[i+1])<= value(s[i])) //if the next letter is greater than the current or if its the last letter add the letter value to sum 
+        {
+             num = value(s[i]);
+        }
+        else if (value(s[i+1])> value(s[i])){ // if the next letter is greater than the current letter it subtracts (value of next letter and current letter) and adds it to the sum
+             num = value(s[i+1]) - value(s[i]);
+             i+=1;// should skip the next letter and move on to the letter after it
+        }
+        cout<<sum<<" "<<num<<endl;
+        sum+= num;
+    }
+    cout<<sum;
+    return 0;
+}
