@@ -1,0 +1,64 @@
+#include <stdio.h>
+#include <string.h>
+#include <math.h>
+#include <stdlib.h>
+
+int queue[100000];
+int front = -1;
+int rear = -1;
+void enqueue()
+{
+    int x;
+    scanf("%d", &x);
+    if(rear==-1 &&front ==-1)
+    {
+        rear++;
+        front++;
+        queue[rear] = x;
+        
+    }
+    else{
+        rear++;
+        queue[rear] =x;
+        
+    }
+    
+}
+
+void dequeue(){
+    if (front ==0&& rear==0)
+    {
+        front--;
+        rear--;
+    }
+    else{
+        front++;
+    }
+}
+void printel(){
+    printf("%d\n", queue[front]);
+}
+int main() {
+    int nquery;
+    scanf("%d", &nquery);
+    int i ,  query;
+    for(i =0;i<nquery;i++)
+    {
+        scanf("%d", &query);
+        switch(query)
+        {
+            case 1:
+            enqueue();
+            break;
+            case 2:
+            dequeue();
+            break;
+            case 3:
+            printel();
+            break;
+        }
+        
+    }
+     
+    return 0;
+}
