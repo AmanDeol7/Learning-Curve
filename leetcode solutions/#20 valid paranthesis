@@ -1,0 +1,39 @@
+bool isValid(char * s){ // function for determining if paranthesis is valid.
+    int len = strlen(s);
+    int i;
+    char stack[10000];
+    int top = -1;
+    for (int i = 0 ; i<len;i++)
+    {
+        if ((s[i]== ')'||s[i]== '}'||s[i]== ']')&& top ==-1) //if th efirst element in the stack is closing bracket then return false.
+        {
+            return false;
+        }
+        if (s[i]== '('||s[i]== '{'||s[i]== '[') // if oncming bracket is open then push it onto the stack.
+        {
+            top++;
+            stack[top]= s[i];
+        }
+        else{
+            if ((s[i]==']'&& stack[top]=='[')||s[i]==')'&& stack[top]=='('||s[i]=='}'&& stack[top]=='{') // if stack top and oncoming bracket are same then pop.
+            {
+                top--;
+
+            }
+            else{ // if stack top is not related to oncoming char then return false. eg (]) returns false.
+                return false;
+            }
+
+        }
+
+    }
+    if (top==-1) // is stack is empty return true
+    {
+        return true;
+    }
+    else{ // if stack still has some elements left return false
+        return false;
+    }
+
+    
+}
