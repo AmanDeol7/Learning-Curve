@@ -1,0 +1,83 @@
+/**
+ * Definition for singly-linked list.
+ * struct ListNode {
+ *     int val;
+ *     struct ListNode *next;
+ * };
+ */
+struct ListNode *addbeg(struct ListNode *head, int n);
+struct ListNode *createnode(int data);
+struct ListNode *insert(struct ListNode *head, int n);
+void addend(struct ListNode *head, int n);
+struct ListNode *createnode(int data)
+{
+    struct ListNode *temp = (struct ListNode *)malloc(sizeof(struct ListNode));
+    temp->val = data;
+    temp->next = NULL;
+    return temp;
+}
+struct ListNode *insert(struct ListNode *head, int n)
+{
+    struct ListNode *ptr = head;
+
+    if (ptr == NULL || ptr->val > n)
+    {
+        head = addbeg(head, n);
+        return head;
+    }
+
+    while (ptr->next != NULL && ptr->next->val < n)
+    {
+        ptr = ptr->next;
+    }
+
+    struct ListNode *temp = createnode(n);
+    temp->next = ptr->next;
+    ptr->next = temp;
+    return head;
+}
+void addend(struct ListNode *head, int n)
+{
+
+    struct ListNode *temp = createnode(n);
+    struct ListNode *ptr;
+    ptr = head;
+    while (ptr->next != NULL)
+    {
+        ptr = ptr->next;
+    }
+    ptr->next = temp;
+}
+struct ListNode *addbeg(struct ListNode *head, int n)
+{
+
+    struct ListNode *temp = createnode(n);
+    temp->next = head;
+    head = temp;
+    return head;
+}
+
+struct ListNode *mergeTwoLists(struct ListNode *list1, struct ListNode *list2)
+{
+    struct ListNode *ptr1, *ptr2;
+    ptr1 = list1;
+    ptr2 = list2;
+    if (list1 == NULL)
+        return list2;
+    if (list2 == NULL)
+        return list1;
+
+    while (ptr1->next != NULL)
+    {
+
+        list2 = insert(list2, ptr1->val);
+        ptr1 = ptr1->next;
+    }
+    if (ptr1->next == NULL)
+    {
+        list2 = insert(list2, ptr1->val);
+        return list2;
+    }
+
+    return list2;
+}
