@@ -63,3 +63,4 @@ int main()
     printArray(A, n); // Printing the array before sorting
     return 0;
 }
+//time complexity O(n^2)
