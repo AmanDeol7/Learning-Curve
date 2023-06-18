@@ -43,6 +43,14 @@ struct node *createnode(int x)
     temp->right_child = NULL;
     return temp;
 }
+struct node* search(struct node * root, int x){  
+  if (root == NULL || root->data == x)  
+    return root;  
+  else if (x > root->data)  
+    return search(root->right_child, x);  
+  else  
+    return search(root->left_child, x);  
+}  
 
 struct node *insert(struct node *root, int x)
 {
