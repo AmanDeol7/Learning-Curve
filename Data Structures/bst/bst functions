@@ -1,5 +1,33 @@
+Insertion
+
+Best case: O(logn)
+Average case: O(logn)
+Worst case: O(n)
+
+Deletion
+
+Best case: O(logn)
+Average case: O(logn)
+Worst case: O(n)
+
+Searching
+
+Best case: O(logn)
+Average case: O(logn)
+Worst case: O(n)
+
+Space Complexity
+
+Insertion: O(n)
+Deletion: O(n)
+Searching: O(n)
+
+
+
+
 #include <stdio.h>
 #include <stdlib.h>
+
 struct node
 {
     int data;
